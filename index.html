@@ -4,23 +4,32 @@
   <title>Image Processing</title>
   <script src="/assets/img.js" type="text/javascript" charset="utf-8"></script>
   <style type="text/css" media="screen">
+    body { font: normal 12px/18px "Lucida Grande", verdana, sans-serif; }
     canvas, img { float: left; background: #000; margin: 10px; }
   </style>
 </head>
 <body onload="init();">
+  
+  <p id="timer"></p>
   
   <img id="image" width="480" height="320" src="/assets/image.png" />
   
   <canvas id="canvas" width="480" height="320"></canvas>
   
 <script type="text/javascript" charset="utf-8">
-  var image, imageData;
+  
+  var image, imageData, startTime, endTime, timer;
+  
   function init() {
+    startTime = new Date();
+    timer = document.getElementById('timer');
     image = document.getElementById('image');
     imageData = img.utils.getImageData(image);
-    canvas.getContext('2d').putImageData(
-      img.effects.desaturate(imageData),
-      0, 0);
+    imageData = img.actions.desaturate(imageData);
+    imageData = img.actions.greyscale(imageData);
+    canvas.getContext('2d').putImageData(imageData, 0, 0);
+    endTime = new Date();
+    timer.innerHTML = 'Finished in ' + (endTime-startTime) + "ms.";
   }
 </script>
 </body>
