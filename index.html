@@ -3,16 +3,24 @@
 <head>
   <title>Image Processing</title>
   <script src="/assets/img.js" type="text/javascript" charset="utf-8"></script>
+  <style type="text/css" media="screen">
+    canvas, img { float: left; background: #000; margin: 10px; }
+  </style>
 </head>
 <body onload="init();">
   
-  <img id="image" src="/assets/image.png" />
+  <img id="image" width="480" height="320" src="/assets/image.png" />
+  
+  <canvas id="canvas" width="480" height="320"></canvas>
   
 <script type="text/javascript" charset="utf-8">
   var image, imageData;
   function init() {
     image = document.getElementById('image');
     imageData = img.utils.getImageData(image);
+    canvas.getContext('2d').putImageData(
+      img.effects.desaturate(imageData),
+      0, 0);
   }
 </script>
 </body>
