@@ -18,19 +18,21 @@
   
 <script type="text/javascript" charset="utf-8">
   
-  var image, imageData, startTime, endTime, timer;
+  var canvas, context, image, imageData, startTime, endTime, timer;
   
   function init() {
     startTime = new Date();
     timer = document.getElementById('timer');
+    canvas = document.getElementById('canvas');
+    context = canvas.getContext('2d');
     image = document.getElementById('image');
     imageData = img.utils.getImageData(image);
-    imageData = img.actions.desaturate(imageData);
-    imageData = img.actions.greyscale(imageData);
-    canvas.getContext('2d').putImageData(imageData, 0, 0);
+    imageData = img.actions.desaturate(imageData, 0.5);
+    context.putImageData(imageData, 0, 0);
     endTime = new Date();
     timer.innerHTML = 'Finished in ' + (endTime-startTime) + "ms.";
   }
+  
 </script>
 </body>
 </html>
