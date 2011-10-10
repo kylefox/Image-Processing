@@ -18,8 +18,8 @@
       v = r*0.3 + g*0.59 + b*0.11
       [v, v, v, 255]
       
-  class @Desaturate extends @Action
-    constructor: (@amount = -0.5) ->
+  class @Saturate extends @Action
+    constructor: (@amount = 0) ->
     
     d: (val, avg) ->
       val -= Math.round((avg - val) * @amount)
@@ -32,6 +32,6 @@
     d = new @Greyscale()
     d.apply(imageData)
     
-  @desaturate = (imageData, amount = -0.5) ->
-    d = new @Desaturate(amount)
+  @saturation = (imageData, amount = 0) ->
+    d = new @Saturate(amount)
     d.apply(imageData)

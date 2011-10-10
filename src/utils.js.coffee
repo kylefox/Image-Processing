@@ -13,6 +13,18 @@
     context = @createCanvas(image)[1]
     context.drawImage(image, 0, 0)
     context.getImageData(0, 0, image.width, image.height)
+    
+  @drawImage = (buffer, destination) ->
+    if destination instanceof HTMLCanvasElement
+      canvas = destination
+    else
+      canvas = document.createElement('canvas')
+    canvas.width = buffer.width
+    canvas.height = buffer.height
+    ctx = canvas.getContext('2d')
+    ctx.putImageData(buffer, 0, 0)
+    if destination instanceof HTMLImageElement
+      destination.src = canvas.toDataURL()
 
   @eachPixel = (imageData, callback) ->
     pixels = imageData.data

@@ -9,27 +9,19 @@
   </style>
 </head>
 <body onload="init();">
-  
-  <p id="timer"></p>
+
+  <img width="480" height="320" src="/assets/image.png" />
   
   <img id="image" width="480" height="320" src="/assets/image.png" />
   
-  <canvas id="canvas" width="480" height="320"></canvas>
-  
 <script type="text/javascript" charset="utf-8">
   
-  var canvas, image, imageData, startTime, endTime;
+  var image, startTime, endTime;
   
   function init() {
-    startTime = new Date();
-    
-    canvas = document.getElementById('canvas');
     image = new img.Image( document.getElementById('image') );
-    image.saturation = 0.5;
-    image.draw(canvas)
-
-    endTime = new Date();    
-    document.getElementById('timer').innerHTML = 'Finished in ' + (endTime-startTime) + "ms.";
+    image.saturation = -.5;
+    image.draw()
   }
   
 </script>
