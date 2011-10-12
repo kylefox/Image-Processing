@@ -1,6 +1,7 @@
 # = require_self
 # = require utils
 # = require actions
+# = require color
 window.img = {};
 
 Array::remove = (e) -> @[t..t] = [] if (t = @.indexOf(e)) > -1
